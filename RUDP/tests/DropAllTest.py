@@ -1,0 +1,18 @@
+import random
+
+from tests.BasicTest import BasicTest
+
+"""
+This tests random packet drops. We randomly decide to drop about half of the
+packets that go through the forwarder in either direction.
+
+Note that to implement this we just needed to override the handle_packet()
+method -- this gives you an example of how to extend the basic test case to
+create your own.
+"""
+class DropAllTest(BasicTest):
+    def handle_packet(self):
+        # 丢包率100%
+
+        # empty out the in_queue
+        self.forwarder.in_queue = []
